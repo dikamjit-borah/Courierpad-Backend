@@ -1,3 +1,5 @@
+//migration always run with development environment, so when running migration for production set development data to production data, run migration and set back#
+
 const config = require("./config/config.json");
 const cors = require("cors");
 const dotenv = require("dotenv").config();
@@ -25,7 +27,7 @@ app.use("/api/admin", admin_routes);
 app.listen(port, () => {
   console.log(port);
   const sqlConnection = mysql.createConnection(
-    config["development-connection-check"]
+    config["production-connection-check"]
   );
   return sqlConnection.connect((err) => {
     if (err) {
