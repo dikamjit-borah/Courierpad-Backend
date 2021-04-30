@@ -1,0 +1,31 @@
+{
+  "name": "courierpad_backend",
+  "version": "1.0.0",
+  "description": "courier management application",
+  "main": "server.js",
+  "scripts": {
+    "start":"nodemon start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hunkyxstudman/Courierpad-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hunkyxstudman/Courierpad-backend/issues"
+  },
+  "homepage": "https://github.com/hunkyxstudman/Courierpad-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
