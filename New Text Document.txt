@@ -1,0 +1,62 @@
+
+Table ADMIN_TABLE {
+  uid int [pk]
+  admin_id int
+  admin_password varchar
+}
+
+Table AGENT_DETAILS_TABLE {
+  uid int [pk]
+  agent_id int
+  agent_password varchar
+  agent_name varchar
+  agent_dob date
+  agent_doj date
+  agent_phone numeric
+  agent_email varchar
+}
+
+Table AGENT_ORDERS_TABLE {
+  uid int [pk]
+  agent_id int
+  order_id int
+}
+
+Table ORDER_DETAILS_TABLE {
+  uid int [pk]
+  order_id int
+  order_location varchar
+  order_client varchar
+	order_receiver varchar
+order_amount
+order_phone
+  order_assigned_to numeric
+  order_status varchar
+}
+
+
+
+
+Ref: "AGENT_ORDERS_TABLE"."order_id" < "ORDER_DETAILS_TABLE"."order_id"
+
+Ref: "AGENT_ORDERS_TABLE"."agent_id" < "ORDER_DETAILS_TABLE"."order_assigned_to"
+
+Ref: "AGENT_DETAILS_TABLE"."agent_id" < "AGENT_ORDERS_TABLE"."agent_id"
+
+
+
+
+npx sequelize-cli model:generate --name ADMIN_TABLE--attributes admin_id:integer,admin_password:string
+
+npx sequelize-cli seed:generate --name ADMIN
+
+return queryInterface.bulkInsert('ADMIN', [{
+      admin_id: 'admin',
+      admin_password: 'minda',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }]);
+
+
+
+npx sequelize-cli model:generate --name AGENTS_TABLE --attributes agent_id:integer,agent_name:string,agent_password:string,agent_dob:date,agent_doj:date,agent_phone:string

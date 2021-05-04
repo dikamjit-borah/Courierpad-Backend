@@ -1,0 +1,37 @@
+{
+  "development": {
+    "username": "freedbtech_theAdminOfCourierpad",
+    "password": "root",
+    "database": "freedbtech_courierpadDB",
+    "host": "freedb.tech",
+    "dialect": "mysql"
+  },
+  "development-connection-check": {
+    "user": "root",
+    "password": "root",
+    "database": "courierpad_master_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "freedbtech_theAdminOfCourierpad",
+    "password": "root",
+    "database": "freedbtech_courierpadDB",
+    "host": "freedb.tech",
+    "dialect": "mysql"
+  },
+  "production-connection-check": {
+    "user": "freedbtech_theAdminOfCourierpad",
+    "password": "root",
+    "database": "freedbtech_courierpadDB",
+    "host": "freedb.tech",
+    "dialect": "mysql"
+  }
+}
