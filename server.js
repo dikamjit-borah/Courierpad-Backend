@@ -10,7 +10,7 @@ const admin_routes = require("./routes/admin_routes");
 //const agent_routes = require("./routes/agent_routes");
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 var corsOptions = {
   origin: `http://localhost:${port}`,
