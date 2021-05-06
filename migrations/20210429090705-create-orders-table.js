@@ -24,6 +24,9 @@ module.exports = {
       order_phone: {
         type: Sequelize.STRING
       },
+      order_amount: {
+        type: Sequelize.INTEGER
+      },
       order_status: {
         type: Sequelize.STRING
       },

@@ -8,12 +8,16 @@ admin_router.get("/view_agents", admin_controller.view_agents);
 admin_router.get("/available_agents", admin_controller.view_available_agents);
 
 admin_router.post("/add_order", admin_controller.add_order);
+
+//admin_router.post("/create_order", admin_controller.create_order);
+
+
 admin_router.get("/view_orders", admin_controller.view_orders);
 admin_router.get("/order_details/:id", admin_controller.order_details);
 
 
 admin_router.put("/order/:id", admin_controller.update_order_status)
-admin_router.put("/agent/:id", admin_controller.update_agent_status)
+//admin_router.put("/agent/:id", admin_controller.update_agent_status)
 
 
 

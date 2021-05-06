@@ -43,7 +43,16 @@ exports.view_available_agents = async (req, res) => {
 
 exports.add_order = async (req, res) => {
   created_order = await admin_services.add_order(req.body, res);
-  res.send("Order created");
+
+  //update agent status
+  order_id = created_order.order_id;
+  assigned_agent_id = created_order.order_assigned_to;
+
+  agent_updated = this.update_agent_status(assigned_agent_id, "IN TRANSIT");
+
+  res.send(`Order #${order_id} created and assigned to ${assigned_agent_id}`);
+
+
 };
 
 exports.view_orders = async (req, res) => {
@@ -60,20 +69,31 @@ exports.order_details = async (req, res) => {
 };
 
 exports.update_order_status = async (req, res) => {
+
+  order_id =  req.params["id"];
+
   updated_order = await admin_services.update_order_status(
-    req.params["id"],
+   order_id,
     "COMPLETED",
     res
   );
-  res.send(updated_order);
-};
 
-exports.update_agent_status = async (req, res) => {
-  updated_agent = await admin_services.update_agent_status(
-    req.params["id"],
-    "111",
-    "IN TRANSIT",
+  details_of_the_order =  await admin_services.order_details(
+    order_id,
     res
   );
-  res.send(updated_agent);
+  order_assigned_to = details_of_the_order.order_assigned_to;
+  console.log(order_assigned_to);
+
+  this.update_agent_status(order_assigned_to, "IDLE");
+  res.send(`Order #${order_id} has been completed by Agent #${order_assigned_to}`);
+};
+
+exports.update_agent_status = async (agent_id, agent_status, res) => {
+  updated_agent = await admin_services.update_agent_status(
+    agent_id,
+    agent_status,
+    res
+  );
+  return updated_agent;
 };

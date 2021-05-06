@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     order_receiver: DataTypes.STRING,
     order_location: DataTypes.STRING,
     order_phone: DataTypes.STRING,
+    order_amount: DataTypes.INTEGER,
     order_status: DataTypes.STRING,
     order_assigned_to: DataTypes.INTEGER
   }, {

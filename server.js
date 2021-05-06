@@ -6,6 +6,7 @@ const dotenv = require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const mysql = require("mysql2");
+const login_routes = require("./routes/login_routes");
 const admin_routes = require("./routes/admin_routes");
 //const agent_routes = require("./routes/agent_routes");
 
@@ -20,8 +21,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//app.use("/api", authRoutes);
-app.use("/api/admin", admin_routes);
+app.use("/api", login_routes);
+app.use("/api/admin",  admin_routes);
 //app.use("/api/agent", auth_routes);
 
 app.listen(port, () => {

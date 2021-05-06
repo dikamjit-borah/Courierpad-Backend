@@ -81,15 +81,14 @@ exports.update_order_status = async (order_id, set_order_status, res) =>{
   } catch (error) {
     ErrorGenerator.generateError(error.name, res);
   }
-  res.send("Order #" +  order_id + " updated!")
   return updated_order;
 }
 
 
-exports.update_agent_status = async (agent_id, assigned_order, set_agent_status, res) =>{
-  let updated_order;
+exports.update_agent_status = async (agent_id, set_agent_status, res) =>{
+  let updated_agent;
   try {
-    updated_order = await AGENT_STATUS_TABLE.update({
+    updated_agent = await AGENT_STATUS_TABLE.update({
       agent_status: set_agent_status
     }, {
       where:{agent_id}
@@ -97,5 +96,5 @@ exports.update_agent_status = async (agent_id, assigned_order, set_agent_status,
   } catch (error) {
     ErrorGenerator.generateError(error.name, res);
   }
-  return updated_order;
+  return updated_agent;
 }
