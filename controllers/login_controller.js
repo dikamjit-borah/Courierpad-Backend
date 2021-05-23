@@ -17,18 +17,19 @@ exports.authenticate_user = async(req, res)=>{
         //console.log(admin.admin_id);
         if(admin == null)
         {
-            res.json({status:"ok", data:`Admin id not found` })
+            res.json({status:"404", data:`Admin id not found` })
         }
         else{
+            console.log(admin.admin_password, " ", user_password);
             if(admin.admin_password == user_password)
             {
                 const token = jwt.sign({user_id}, process.env.JWT_SECRET)
                 //lolcalstorage
-                res.json({status:"ok", data:`Admin #${admin.admin_id} logged in with token ${token}` })
+                res.json({status:"200", data:`${token}` })
             }
 
             else
-            res.json({status:"ok", data:`Invalid credentials` })
+            res.json({status:"401", data:`Invalid credentials` })
         }  
         
     }
@@ -36,7 +37,25 @@ exports.authenticate_user = async(req, res)=>{
     else if(user_type == "agent")
     {
         //res.send("Admin login")
-        agent_token = login_services.authenticate_agent(user_id, user_password);
+        agent = await login_services.authenticate_agent(user_id, user_password);
+        if(agent == null)
+        {
+            res.json({status:"404", data:`Agent id not found` })
+        }
+        else{
+
+            console.log(agent.agent_password, " ", user_password);
+            if(agent.agent_password == user_password)
+            {
+                const token = jwt.sign({user_id}, process.env.JWT_SECRET)
+                //lolcalstorage
+                res.json({status:"200", data:`${token}` })
+            }
+
+            else
+            res.json({status:"401", data:`Invalid credentials` })
+        }  
+        
     }
     else{
         res.send("Select a correct user type");

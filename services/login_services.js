@@ -21,5 +21,19 @@ exports.authenticate_admin =async(user_id, user_password, res) =>{
 
 exports.authenticate_agent =async(user_id, user_password) =>{
 
+
+    let agent;
+    try {
+        agent = await AGENTS_TABLE.findOne({
+            where:{
+                agent_id:user_id,
+            }
+        })
+    } catch (error) {
+        ErrorGenerator.generateError(error.name, res);
+    }
+    
+    return agent;
+
     
 }
