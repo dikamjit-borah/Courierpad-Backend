@@ -8,7 +8,7 @@ const http = require("http");
 const mysql = require("mysql2");
 const login_routes = require("./routes/login_routes");
 const admin_routes = require("./routes/admin_routes");
-//const agent_routes = require("./routes/agent_routes");
+const agent_routes = require("./routes/agent_routes");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", login_routes);
 app.use("/api/admin",  admin_routes);
-//app.use("/api/agent", auth_routes);
+app.use("/api/agent", agent_routes);
 
 app.listen(port, () => {
   console.log(port);
