@@ -5,7 +5,7 @@ const { AGENTS_TABLE, ORDERS_TABLE, AGENT_STATUS_TABLE } = require("../models/in
 exports.agent_history_service = async (agent_id, res) => {
   let agent;
   try {
-    agent = await ORDERS_TABLE.findOne({ where: { order_assigned_to: agent_id } })
+    agent = await ORDERS_TABLE.findAll({ where: { order_assigned_to: agent_id } })
   } catch (error) {
     ErrorGenerator.generateError(error, res)
   }
