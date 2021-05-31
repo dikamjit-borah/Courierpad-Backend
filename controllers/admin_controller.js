@@ -23,7 +23,7 @@ exports.add_agent = async (req, res) => {
     );
 
     await transaction.commit();
-    res.send("Agent #" + agent_id + " created successfully");
+    res.send(created_agent);
   } catch (error) {
     await transaction.rollback();
     ErrorGenerator.generateError(error.name, res);
@@ -50,7 +50,7 @@ exports.add_order = async (req, res) => {
 
   agent_updated = this.update_agent_status(assigned_agent_id, "IN TRANSIT");
 
-  res.send(`Order #${order_id} created and assigned to ${assigned_agent_id}`);
+  res.send(created_order);
 
 
 };
