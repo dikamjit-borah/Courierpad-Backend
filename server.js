@@ -28,11 +28,11 @@ app.use("/api/agent", agent_routes);
 app.listen(port, () => {
   console.log(port);
   const sqlConnection = mysql.createConnection(
-    config["production-connection-check"]
+    config["development-connection-check"]
   );
   return sqlConnection.connect((err) => {
     if (err) {
-      console.log("Database Connection Error: ", err);
+      console.log("Database Connection Error: \n", err);
       return;
     }
     console.log("Database connected as id: ", sqlConnection.threadId);

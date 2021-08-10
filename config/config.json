@@ -1,17 +1,20 @@
 {
   "development": {
-    "username": "freedbtech_theAdminOfCourierpad",
-    "password": "root",
-    "database": "freedbtech_courierpadDB",
-    "host": "freedb.tech",
-    "dialect": "mysql"
+    "username": "sql6430144",
+    "password": "FVuUxQ1nSj",
+    "database": "sql6430144",
+    "host": "sql6.freemysqlhosting.net",
+    "dialect": "mysql",
+    "port":3306
   },
   "development-connection-check": {
-    "user": "root",
-    "password": "root",
-    "database": "courierpad_master_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "user": "sql6430144",
+    "password": "FVuUxQ1nSj",
+    "database": "sql6430144",
+    "host": "sql6.freemysqlhosting.net",
+    "dialect": "mysql",
+    "port":3306
+  
   },
   "test": {
     "username": "root",
@@ -19,19 +22,22 @@
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
+    
   },
   "production": {
-    "username": "freedbtech_theAdminOfCourierpad",
-    "password": "root",
-    "database": "freedbtech_courierpadDB",
-    "host": "freedb.tech",
-    "dialect": "mysql"
+    "username": "sql6430144",
+    "password": "FVuUxQ1nSj",
+    "database": "sql6430144",
+    "host": "sql6.freemysqlhosting.net",
+    "dialect": "mysql",
+    "port":3306
   },
   "production-connection-check": {
-    "user": "freedbtech_theAdminOfCourierpad",
-    "password": "root",
-    "database": "freedbtech_courierpadDB",
-    "host": "freedb.tech",
-    "dialect": "mysql"
+    "username": "sql6430144",
+    "password": "FVuUxQ1nSj",
+    "database": "sql6430144",
+    "host": "sql6.freemysqlhosting.net",
+    "dialect": "mysql",
+    "port":3306
   }
 }
