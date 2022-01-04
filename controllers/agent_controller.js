@@ -4,8 +4,16 @@ const ErrorGenerator = require("../utilities/ErrorGenerator");
 
 exports.get_agent_history = async (req, res) => {
   let agent_id = req.query["agent_id"]
-  agent_history = await agent_services.agent_history_service(
+  const agent_history = await agent_services.agent_history_service(
     agent_id, res
   );
  res.send(agent_history);
 };
+
+exports.update_order_status = async (req, res)=> {
+  const order_id = req.body.order_id
+  const order = await agent_services.update_order_status(
+    order_id, res
+  );
+ res.send("Order Status Updated");
+}
