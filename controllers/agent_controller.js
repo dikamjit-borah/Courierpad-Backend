@@ -15,5 +15,5 @@ exports.update_order_status = async (req, res)=> {
   const order = await agent_services.update_order_status(
     order_id, agent_id,res
   );
- res.send("Order Status Updated");
+ res.json({"msg":"Order Status Updated"});
 }
