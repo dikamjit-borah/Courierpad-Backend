@@ -1,16 +1,16 @@
 {
   "development": {
-    "username": "sql6430144",
-    "password": "FVuUxQ1nSj",
-    "database": "sql6430144",
+    "username": "sql6463307",
+    "password": "b35IE2mdji",
+    "database": "sql6463307",
     "host": "sql6.freemysqlhosting.net",
     "dialect": "mysql",
     "port":3306
   },
   "development-connection-check": {
-    "user": "sql6430144",
-    "password": "FVuUxQ1nSj",
-    "database": "sql6430144",
+    "user": "sql6463307",
+    "password": "b35IE2mdji",
+    "database": "sql6463307",
     "host": "sql6.freemysqlhosting.net",
     "dialect": "mysql",
     "port":3306
@@ -25,17 +25,17 @@
     
   },
   "production": {
-    "username": "sql6430144",
-    "password": "FVuUxQ1nSj",
-    "database": "sql6430144",
+    "username": "sql6463307",
+    "password": "b35IE2mdji",
+    "database": "sql6463307",
     "host": "sql6.freemysqlhosting.net",
     "dialect": "mysql",
     "port":3306
   },
   "production-connection-check": {
-    "username": "sql6430144",
-    "password": "FVuUxQ1nSj",
-    "database": "sql6430144",
+    "username": "sql6463307",
+    "password": "b35IE2mdji",
+    "database": "sql6463307",
     "host": "sql6.freemysqlhosting.net",
     "dialect": "mysql",
     "port":3306
