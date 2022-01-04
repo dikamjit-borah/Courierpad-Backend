@@ -11,9 +11,9 @@ exports.get_agent_history = async (req, res) => {
 };
 
 exports.update_order_status = async (req, res)=> {
-  const order_id = req.body.order_id
+  const {order_id, agent_id} = req.body
   const order = await agent_services.update_order_status(
-    order_id, res
+    order_id, agent_id,res
   );
  res.send("Order Status Updated");
 }

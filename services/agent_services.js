@@ -12,9 +12,10 @@ exports.agent_history_service = async (agent_id, res) => {
   return agent;
 };
 
-exports.update_order_status = async (order_id, res) => {
+exports.update_order_status = async (order_id,agent_id, res) => {
   try {
     const order = await ORDERS_TABLE.update({ order_status: 'COMPLETED' },{ where: { order_id: order_id } })
+    const agent = await AGENTS_TABLE.update({agent_status:'IDLE'},{ where: { agent_id: agent_id } })
   } catch (error) {
     ErrorGenerator.generateError(error, res)
   }
