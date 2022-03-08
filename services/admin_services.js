@@ -1,6 +1,7 @@
 const ErrorGenerator = require("../utilities/ErrorGenerator");
 const db = "../models/index";
 const { AGENTS_TABLE, ORDERS_TABLE, AGENT_STATUS_TABLE } = require("../models/index");
+const moment = require('moment')
 
 exports.add_agent = async (data, res, transaction) => {
   let agent;
@@ -40,7 +41,7 @@ exports.add_order = async (data, res) => {
   let order;
   try {
     order = await ORDERS_TABLE.create({
-      ...data,
+      ...data
     });
   } catch (err) {
     ErrorGenerator.generateError(err.name, res);
@@ -49,8 +50,36 @@ exports.add_order = async (data, res) => {
   return order;
 };
 
-exports.view_orders = async () => {
-  let orders = await ORDERS_TABLE.findAll();
+exports.add_order_public = async (data, res) => {
+  let order;
+  try {
+    order = await ORDERS_TABLE.create({
+      ...data,
+      order_date:moment(new Date()).format('YYYY-MM-DD HH:mm:ss'),
+      order_status:"In Progress"
+    });
+  } catch (err) {
+    ErrorGenerator.generateError(err.name, res);
+  }
+
+  return order;
+};
+
+exports.view_orders = async (isAssigned) => {
+  let orders 
+  if(isAssigned){
+    orders = await ORDERS_TABLE.findAll({where:{
+      order_assigned_to :{
+        [Op.ne]: null
+      }
+    }});
+  }
+  else {
+    orders = await ORDERS_TABLE.findAll({where:{
+      order_assigned_to : null
+    }});
+  }
+  
   return orders;
 };
 

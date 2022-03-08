@@ -24,6 +24,7 @@ exports.add_agent = async (req, res) => {
 
     await transaction.commit();
     res.send(created_agent);
+    //Email service to be implemented for agent
   } catch (error) {
     await transaction.rollback();
     ErrorGenerator.generateError(error.name, res);
@@ -51,12 +52,19 @@ exports.add_order = async (req, res) => {
   agent_updated = this.update_agent_status(assigned_agent_id, "IN TRANSIT");
 
   res.send(created_order);
-
+    //Email service to be implemented for agent and user
 
 };
 
+exports.add_order_public = async (req, res) => {
+  created_order = await admin_services.add_order_public(req.body, res);
+  res.send(created_order);
+
+      //Email service to be implemented for user
+};
+
 exports.view_orders = async (req, res) => {
-  all_orders = await admin_services.view_orders();
+  all_orders = await admin_services.view_orders(req.params["assigned"]);
   res.send(all_orders);
 };
 
@@ -68,6 +76,13 @@ exports.order_details = async (req, res) => {
   res.send(details_of_the_order);
 };
 
+exports.order_details_public = async (req, res) => {
+  details_of_the_order = await admin_services.order_details(
+    req.query["id"],
+    res
+  );
+  res.send(details_of_the_order);
+};
 exports.update_order_status = async (req, res) => {
 
   order_id =  req.params["id"];
@@ -87,6 +102,8 @@ exports.update_order_status = async (req, res) => {
 
   this.update_agent_status(order_assigned_to, "IDLE");
   res.send(`Order #${order_id} has been completed by Agent #${order_assigned_to}`);
+
+      //Email service to be implemented to user
 };
 
 exports.update_agent_status = async (agent_id, agent_status, res) => {
@@ -96,4 +113,17 @@ exports.update_agent_status = async (agent_id, agent_status, res) => {
     res
   );
   return updated_agent;
+
+      //Email service to be implemented to agent
 };
+
+exports.partial_order = async (req, res) => {
+  updated_order = await admin_services.partial_order(
+    req.body,
+    res
+  );
+
+  agent_updated = this.update_agent_status(assigned_agent_id, "IN TRANSIT");
+
+  res.send(updated_order)
+}
