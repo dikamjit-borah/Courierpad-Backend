@@ -3,6 +3,7 @@ const db = "../models/index";
 const { AGENTS_TABLE, ORDERS_TABLE, AGENT_STATUS_TABLE } = require("../models/index");
 const moment = require('moment')
 const Sequelize = require('sequelize');
+const req = require("express/lib/request");
 const Op = Sequelize.Op;
 
 exports.add_agent = async (data, res, transaction) => {
@@ -52,11 +53,15 @@ exports.add_order = async (data, res) => {
   return order;
 };
 
-exports.partial_order = async (data, res) => {
+exports.partial_order = async ({assigned_agent_id,order_estimated_date,order_id}) => {
   let order;
   try {
-    order = await ORDERS_TABLE.create({
-      ...data
+    order = await ORDERS_TABLE.update({
+      order_assigned_to: assigned_agent_id,
+      order_estimated_date:moment(order_estimated_date).format('YYYY-MM-DD'),
+      order_status:"IN TRANSIT"
+    }, {
+      where:{order_id}
     });
   } catch (err) {
     ErrorGenerator.generateError(err.name, res);

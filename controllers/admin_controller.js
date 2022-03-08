@@ -119,11 +119,10 @@ exports.update_agent_status = async (agent_id, agent_status, res) => {
 
 exports.partial_order = async (req, res) => {
   updated_order = await admin_services.partial_order(
-    req.body,
-    res
+    req.body
   );
 
-  agent_updated = this.update_agent_status(assigned_agent_id, "IN TRANSIT");
+  agent_updated = this.update_agent_status(req.body.assigned_agent_id, "IN TRANSIT");
 
   res.send(updated_order)
 }

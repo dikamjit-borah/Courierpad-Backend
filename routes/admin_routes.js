@@ -10,6 +10,7 @@ admin_router.get("/available_agents", admin_controller.view_available_agents);
 
 admin_router.post("/add_order", admin_controller.add_order);
 admin_router.post("/add_order_public", admin_controller.add_order_public);
+admin_router.post("/partial_order", admin_controller.partial_order)
 
 //admin_router.post("/create_order", admin_controller.create_order);
 
