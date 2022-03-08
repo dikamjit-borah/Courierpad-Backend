@@ -64,7 +64,7 @@ exports.add_order_public = async (req, res) => {
 };
 
 exports.view_orders = async (req, res) => {
-  all_orders = await admin_services.view_orders(req.params["assigned"]);
+  all_orders = await admin_services.view_orders(req.query["assigned"]);
   res.send(all_orders);
 };
 

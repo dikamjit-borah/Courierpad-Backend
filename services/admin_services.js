@@ -2,6 +2,8 @@ const ErrorGenerator = require("../utilities/ErrorGenerator");
 const db = "../models/index";
 const { AGENTS_TABLE, ORDERS_TABLE, AGENT_STATUS_TABLE } = require("../models/index");
 const moment = require('moment')
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 exports.add_agent = async (data, res, transaction) => {
   let agent;
@@ -50,6 +52,19 @@ exports.add_order = async (data, res) => {
   return order;
 };
 
+exports.partial_order = async (data, res) => {
+  let order;
+  try {
+    order = await ORDERS_TABLE.create({
+      ...data
+    });
+  } catch (err) {
+    ErrorGenerator.generateError(err.name, res);
+  }
+
+  return order;
+};
+
 exports.add_order_public = async (data, res) => {
   let order;
   try {
@@ -67,7 +82,8 @@ exports.add_order_public = async (data, res) => {
 
 exports.view_orders = async (isAssigned) => {
   let orders 
-  if(isAssigned){
+  console.log(isAssigned,"isAssigned")
+  if(isAssigned==1){
     orders = await ORDERS_TABLE.findAll({where:{
       order_assigned_to :{
         [Op.ne]: null
