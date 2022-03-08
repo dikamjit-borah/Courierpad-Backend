@@ -22,7 +22,9 @@ module.exports = (sequelize, DataTypes) => {
     order_phone: DataTypes.STRING,
     order_amount: DataTypes.INTEGER,
     order_status: DataTypes.STRING,
-    order_assigned_to: DataTypes.INTEGER
+    order_assigned_to: DataTypes.INTEGER,
+    order_email: DataTypes.STRING,
+    order_estimated_date: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'ORDERS_TABLE',

@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     agent_password: DataTypes.STRING,
     agent_dob: DataTypes.DATE,
     agent_doj: DataTypes.DATE,
-    agent_phone: DataTypes.STRING
+    agent_phone: DataTypes.STRING,
+    agent_email: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'AGENTS_TABLE',
